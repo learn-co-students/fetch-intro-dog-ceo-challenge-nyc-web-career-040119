@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const dogsContainer = document.querySelector("#dog-image-container")
   const dogBreedsContainer = document.querySelector("#dog-breeds")
   const breedDropdown = document.querySelector("#breed-dropdown")
+  const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
 
   // FETCH IMAGES
   fetch(imgUrl)
@@ -59,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function(){
         const breedOptions = breedDropdown.options
         const optionsIndex = breedOptions.selectedIndex
         const filterSelection = breedDropdown.options[optionsIndex].value
-        const alphabet = [...'abcdefghijklmnopqrstuvwxyz']
 
         // resets dogBreedsContainer on selection
         dogBreedsContainer.innerHTML = ""
@@ -87,5 +87,11 @@ document.addEventListener('DOMContentLoaded', function(){
     }) // end dogBreeds
 
   // ADD ALL ALPHABETS TO DROPDOWN
+  alphabet.forEach(function(letter){
+    const newOption = document.createElement("option")
+    newOption.value = `${letter}`
+    newOption.innerText = letter
+    breedDropdown.appendChild(newOption)
+  })
 
 }) // end DOMContentLoaded
