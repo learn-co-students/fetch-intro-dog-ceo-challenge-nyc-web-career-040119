@@ -33,13 +33,25 @@ document.addEventListener('DOMContentLoaded', function(){
       const dogBreedList = dogBreeds.message
       // dogBreedList is an object
 
-      // loop through each object item
-      // forEach does not work on objects
-      for (let [key, value] of Object.entries(dogBreedList)) {
+      const breedKeys = Object.keys(dogBreedList)
+      // calling Object.keys(object) will return all key items from Object
+
+      breedKeys.forEach(function(breed){
         const newDogBreed = document.createElement("li")
-        newDogBreed.innerText = key
+        newDogBreed.dataset.id = `breed-id-${breed}`
+        newDogBreed.innerText = breed
         dogBreedsContainer.appendChild(newDogBreed)
-      } // end for loop
+      })
+
+      // EVENT LISTENER
+      const breedItem = document.querySelectorAll("li")
+
+      for (let i = 0; i < breedItem.length; i++) {
+        breedItem[i].addEventListener("click", function(){
+          breedItem[i].style.backgroundColor = "pink"
+        });
+      }
+
     }) // end dogBreeds
 
 }) // end DOMContentLoaded
