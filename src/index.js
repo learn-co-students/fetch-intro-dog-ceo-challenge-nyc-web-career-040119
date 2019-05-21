@@ -4,6 +4,11 @@ const breedUl = document.querySelector('#dog-breeds')
 const dogContainer = document.querySelector('#dog-image-container')
 const filterSelect = document.querySelector('#breed-dropdown')
 
+// Adds Link to Google Image Search For Each Breed
+function imgLink(search) {
+  return `https://www.google.com/search?q=${search}%20dog&source=lnms&tbm=isch&sa=X`
+}
+
 // Used to Capitalize Breeds
 const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1)
@@ -51,7 +56,7 @@ fetch("https://dog.ceo/api/breeds/list/all")
     let values = Object.values(arr)
     for (var i = 0; i < keys.length; i++) {
       breedUl.innerHTML += `
-        <li>${keys[i]}${values[i].join(", ")}</li>
+        <li><a target="_blank" href=${imgLink(keys[i])} />${keys[i]}${values[i].join(", ")}</li>
       `
     }
   })
