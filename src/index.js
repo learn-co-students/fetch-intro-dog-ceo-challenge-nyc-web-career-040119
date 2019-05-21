@@ -2,7 +2,6 @@ let switcher = false
 let filterList = ["All"]
 const breedUl = document.querySelector('#dog-breeds')
 const dogContainer = document.querySelector('#dog-image-container')
-const filterBtn = document.querySelector('#filter-btn')
 const filterSelect = document.querySelector('#breed-dropdown')
 
 // Used to Capitalize Breeds
